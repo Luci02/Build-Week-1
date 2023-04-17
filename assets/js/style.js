@@ -12,18 +12,20 @@ async function getQuestions() {
         domanda.textContent = question.question;
 
         //creo un array vuoto e pusho tutte le domande
-        let answerList = [];
-        answerList.push(question["correct_answer"]);
+        let options = [];
+        options.push(question["correct_answer"]);
         for (let element of question["incorrect_answers"]) {
-            answerList.push(element);
+            options.push(element);
         }
 
-        //con la funzione shuffleArray() mescolo gli elementi contenuti nell'array
-        shuffleArray(answerList);
-        console.log(answerList);
+        //salvo in una variabile la risposta corretta
+        let correctAnswer = question["correct_answer"];
 
+        //con la funzione shuffleArray() mescolo gli elementi contenuti nell'array
+        shuffleArray(options);
+        
         //stampo le domande
-        for (let risposta of answerList) {
+        for (let risposta of options) {
 
             let bottone = document.createElement('button');
             bottone.textContent = risposta;
@@ -47,4 +49,5 @@ function shuffleArray(array) {
     return array;
 }
 
+//eseguo la funzione getQuestions
 getQuestions();
