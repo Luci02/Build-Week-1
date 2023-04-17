@@ -1,0 +1,82 @@
+.window{
+    margin: auto;
+    width: 1024px;
+    height: 768px;
+    background-image: url(../img/bg.jpg);
+    
+    
+    
+    
+}
+h3, h4 , button{
+    font-family: 'Outfit', sans-serif;
+}
+p {
+    font-family: 'Inter', sans-serif;
+    
+}
+
+.box{
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+    
+}
+#logo img{
+    width: 150px;
+    padding-top: 40px;
+
+}
+h3{
+    font-size: 3em;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 130px;
+    padding-bottom: 30px;
+    
+}
+span{
+    font-weight: 300;
+}
+button{
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-weight: bolder;
+    font-size: 1.2em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: rgba(87, 86, 86, 0.144);
+    border: 2px solid white;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    font-size: 0.8em;
+    box-shadow: 15px 0 15px -15px inset;
+
+}
+.bottone{
+    margin-left: 150px;
+    margin-right: 150px;
+    display: flex;
+    
+    
+    
+}
+h4{
+    margin-top: 110px;
+    color: white;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
+    margin-left: 430px;
+    letter-spacing: 3px;
+}
+b{
+    color: #D20094;
+    font-weight: 600;
+    font-size: 1em;
+}
