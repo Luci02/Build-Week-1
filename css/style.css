@@ -1,0 +1,11 @@
+h3, h4{
+    font-family: 'Outfit', sans-serif;
+}
+p {
+    font-family: 'Inter', sans-serif;
+}
+main{
+    width: 1024px;
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+}
