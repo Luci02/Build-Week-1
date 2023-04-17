@@ -20,11 +20,15 @@ async function getQuestions(){
 
         //con la funzione shuffleArray() mescolo gli elementi contenuti nell'array
         shuffleArray(answerList);
-        console.log(answerList);
 
         //stampo le domande
-        for (let answer of answerList) {
-            
+        for (let i = 0; i < answerList.length; i++) {
+            let buttonContainer = document.querySelector('#button-container');
+            let bottone = document.createElement('button');
+            bottone.textContent = answerList[i];
+            //AGGIUNGERE LE VARIE CLASSI AL BOTTONE
+            // bottone.classList.add('');
+            buttonContainer.append(bottone);
         }
 
     }
