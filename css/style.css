@@ -4,12 +4,17 @@ h3, h4 , button{
 p {
     font-family: 'Inter', sans-serif;
 }
-main{
+.window{
     margin: auto;
     width: 1024px;
     height: 768px;
     background-image: url(../img/bg.jpg);
     
+    
+}
+.paragrafo1{
+    font-size: 0.9em;
+    margin-right: 100px;
     
 }
 .box{
@@ -35,7 +40,8 @@ span{
     font-weight: 300;
 }
 li{
-    line-height: 20px;
+    font-size: 0.9em;
+    line-height: 25px;
 }
 
 #istruction{
@@ -66,11 +72,12 @@ input{
 
 
 .text{
+    font-size: 0.9em;
     padding-left: 10px;
     margin-top: 20px;
 }
 #checkContainer{
-    margin-top: 100px;
+    margin-top: 70px;
     vertical-align: center;
     display: flex;
     align-items: center;
@@ -78,14 +85,15 @@ input{
 }
 
 button{
+    
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 60px;
     padding-right: 60px;
     font-weight: bolder;
-    font-size: 1.2em;
+    font-size: 1.4em;
     background-color: #00ffff;
-    box-shadow: 0 5px 15px #00ffff;
+    box-shadow:  0 0 30px  #00ffff;
     border: none;
     
 
@@ -96,6 +104,8 @@ button{
 }
 
 #bottone{
-    margin-left: 700px;
+    margin-top: -55px;
+    
+    margin-left: 620px;
     
 }
