@@ -1,0 +1,15 @@
+.star{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-color: black;
+    border-radius: 100%;
+    margin: 0 10px;
+    
+  
+}
+
+.starHover{
+    background-color: yellow;
+
+}
