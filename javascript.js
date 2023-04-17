@@ -19,7 +19,7 @@ getQuestions();
 
 
 //timer : 
-/*
+
 let timeLeft = 0;
 for (let i = 0; i <questions.lenght; i++) {
     if (questions[i].difficulty == "medium") {
@@ -27,13 +27,16 @@ for (let i = 0; i <questions.lenght; i++) {
     }else{
         timeLeft = 45
     }
-} */ 
-timeLeft = 60;
+} 
+
 let timer = setInterval(() => {
-    timeLeft--;
-    document.getElementById('timer').textContent = timeLeft;
-    if (timeLeft === 0) {
-        clearInterval(timer);
-    }    
-}, 1000)
-    
+  timeLeft--;
+  document.getElementById('timer').textContent = timeLeft;
+  let degrees = (timeLeft / 60) * 360 - 90;
+  document.getElementById('timer').style.transform = `rotate(${degrees}deg)`;
+  let opacity = timeLeft / 60;
+  document.getElementById('timer').style.borderColor = `rgba(0, 0, 255, ${opacity})`;
+  if (timeLeft === 0) {
+    clearInterval(timer);
+  }
+}, 1000);
