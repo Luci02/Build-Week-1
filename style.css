@@ -1,0 +1,16 @@
+#timer-container{
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+#timer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: blue;
+    opacity: 1;
+    transition: opacity 1s linear
+
+}
