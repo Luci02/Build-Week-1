@@ -7,21 +7,22 @@ async function getQuestions() {
 
     console.dir(questions);
     
+    
+    for( let i = 0; i < questions.length ; i++){
+        displayQuestion(i)
+    }
+
     //ciclo le domande una per una
-    let questionIndex = 0;
-    displayQuestion(questionIndex)
     
     function displayQuestion(index) {
         if (index >= questions.length) {
-            return;
+            target.removeChild(target)
         }
     
         let question = questions[index];
         let clone = template.content.cloneNode(true);
 
         for (let question of questions) {
-        
-
         
         //creo un array vuoto e pusho tutte le domande
         let options = [];
@@ -47,7 +48,8 @@ async function getQuestions() {
 
             bottone.addEventListener('click', () => {
                 clearInterval(timerInterval);
-                target.innerHTML = '';
+                target.removeChild(bottone);
+                target.appendChild(bottone);
                 displayQuestion(index + 1);
             });
             //AGGIUNGERE LE VARIE CLASSI AL BOTTONE
