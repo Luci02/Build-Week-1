@@ -7,9 +7,6 @@ async function getQuestions() {
 
     //ciclo le domande una per una
     for (let question of questions) {
-        //seleziono l'elemento con l'id #domanda e gli cambio il contenuto
-        let domanda = document.querySelector('#domanda');
-        domanda.textContent = question.question;
 
         //creo un array vuoto e pusho tutte le domande
         let options = [];
@@ -23,13 +20,33 @@ async function getQuestions() {
 
         //con la funzione shuffleArray() mescolo gli elementi contenuti nell'array
         shuffleArray(options);
-        
+
         //stampo le domande
         for (let risposta of options) {
 
+            //salvo la difficoltà in una variabile
+            let difficulty = risposta.difficulty;
+            let time = 0;
+
+            switch (true) {
+                case difficulty == 'easy':
+                    time = 16;
+                    break;
+                case difficulty == 'medium':
+                    time = 40;
+                    break;
+                case difficulty == 'hard':
+                    time = 60;
+                    break;
+            }
+
+            //seleziono l'elemento con l'id #domanda e gli cambio il contenuto
+            let domanda = document.querySelector('#domanda');
+            domanda.textContent = question.question;
+
             let bottone = document.createElement('button');
             bottone.textContent = risposta;
-            
+
             //AGGIUNGERE LE VARIE CLASSI AL BOTTONE
             let buttonContainer = document.querySelector('#button-container');
             // bottone.classList.add('');
