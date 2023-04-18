@@ -1,0 +1,132 @@
+.window{
+    margin: auto;
+    width: 1024px;
+    height: 768px;
+    background-image: url(../img/bg.jpg);
+    color: white;
+}
+
+.box{
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;  
+}
+
+#logo img{
+    width: 150px;
+    margin-top: 50px;
+}
+
+h3, h4 {
+    font-family: 'Outfit', sans-serif;
+}
+
+p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+h3{
+    font-size: 50px;
+}
+
+.risultati {
+    text-align: center;
+    line-height: 1px;
+}
+
+.esito {
+    margin-left: 100px;
+    margin-top: 150px;
+    margin-right: 700px;
+}
+
+.esito h3{
+    font-weight: 350;
+    margin-bottom: -20px;
+    margin-top: 30px;
+}
+
+.esito p{
+    margin-top: - 80px;
+    font-size: 1.1em;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.esito2 {
+    margin-right: 80px;
+    margin-top: -175px;
+    margin-left: 770px;
+}
+
+.esito2 h3{
+    font-weight: 350;
+    margin-bottom: -20px;
+    margin-top: 30px;
+}
+
+.esito2 p{
+    margin-top: - 80px;
+    font-size: 1.1em;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.84);
+    margin-left: 30px;
+}
+
+.esito2 b{
+    margin-left: 15px;
+}
+
+#congratulations {
+    text-align: center;
+    margin-top: -170px;
+    margin-left: 440px;
+    margin-right: 440px;
+    margin-bottom: 300px;
+}
+
+#congratulations p {
+    font-size: 0.8em;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+h4 {
+    font-size: 1em;
+}
+
+span {
+    color: #06BCCA;
+}
+
+#circle {
+    border: 45px solid #00ffff;
+    border-radius: 50%;
+    width: 240px;
+    height: 240px;   
+    margin-top: -560px; 
+    margin-left: 350px;
+    -webkit-box-shadow: 1px 2px 14px 6px #0000009f;
+    -moz-box-shadow: 1px 2px 14px 6px #0000009f;
+    -o-box-shadow: 1px 2px 14px 6px #0000009f;
+    box-shadow: 1px 2px 14px 6px #0000009f;   
+}
+
+button{ 
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    font-weight: bolder;
+    font-size: 1.4em;
+    border: 2.3px solid white;
+    margin-left: 400px;
+    margin-top: 55px;
+    color: white;
+    background-color: transparent;
+    box-shadow:  0 0 20px  rgba(60, 128, 196, 0.547);
+}
+
