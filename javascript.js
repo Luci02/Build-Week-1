@@ -10,17 +10,7 @@ async function getQuestions(){
 getQuestions();
 
 
-let size= 100
 let timeLeft = 60
-function reduceBorder(){
-
-  
-  size = Math.abs(timeLeft - 0)
-  border.style.width = `${size}%`;
-  border.style.height = `${size}%`
-}
-
-
 let timer = setInterval(() => {
   timeLeft--;
   document.getElementById('timer').textContent = timeLeft;
@@ -29,8 +19,6 @@ let timer = setInterval(() => {
 }
 }, 1000);
  
-
-
 
 
 /*
