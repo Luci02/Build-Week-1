@@ -1,16 +1,19 @@
 let sum = 0;
-
-
+let options = []
+let time
 async function getQuestions() {
-    let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
+    let response = await fetch('https://opentdb.com/api.php?amount=10&category=18');
+    let domande = await response.json();
     
-    console.dir(questions);
     
+
+    console.log(domande);
+
     //ciclo le domande una per una
-    for (let question of questions) {
+    for (let question of domande.results) {
         
         //creo un array vuoto e pusho tutte le domande
-        let options = [];
+        options = [];
         options.push(question["correct_answer"]);
         for (let element of question["incorrect_answers"]) {
             options.push(element);
@@ -24,10 +27,10 @@ async function getQuestions() {
 
         //stampo le domande
         for (let risposta of options) {
-
+            console.log(risposta);
             //salvo la difficoltà in una variabile
             let difficulty = risposta.difficulty;
-            let time = 0;
+            time = 0;
 
             switch (true) {
                 case difficulty == 'easy':
@@ -39,8 +42,9 @@ async function getQuestions() {
                 case difficulty == 'hard':
                     time = 60;
                     break;
+                    
             }
-
+            console.log(difficulty)
             //seleziono l'elemento con l'id #domanda e gli cambio il contenuto
             // let domanda = document.querySelector('#domanda');
             // domanda.textContent = question.question;
@@ -56,7 +60,7 @@ async function getQuestions() {
         }
 
     }
-}
+
 
 //funzione per mescolare gli elementi di un array
 function shuffleArray(array) {
@@ -67,8 +71,6 @@ function shuffleArray(array) {
     return array;
 }
 
-//eseguo la funzione getQuestions
-getQuestions();
 
 console.log(options)
 console.log(time)
@@ -79,80 +81,81 @@ let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 
-document.getElementById("app").innerHTML = `
-<div class="base-timer">
-  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <g class="base-timer__circle">
-      <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-      <path
-        id="base-timer-path-remaining"
-        stroke-dasharray="283"
-        class="base-timer__path-remaining"
-        d="
-          M 50, 50
-          m -45, 0
-          a 45,45 0 1,0 90,0
-          a 45,45 0 1,0 -90,0
-        "
-      ></path>
-    </g>
-  </svg>
-  <span id="base-timer-label" class="base-timer__label">
-  <p class="seconds">Seconds</p>
-  ${formatTime(timeLeft)}
-  <p class="remaining">Remaining</p>
-  </span>
-</div>
-`;
-
-startTimer();
 
 function onTimesUp() {
-  clearInterval(timerInterval);
+    clearInterval(timerInterval);
 }
 
 function startTimer() {
-  timerInterval = setInterval(() => {
-    timePassed = timePassed += 1;
-    timeLeft = TIME_LIMIT - timePassed;
-    document.getElementById("base-timer-label").innerHTML = `<p class="seconds">Seconds</p> 
-    ${formatTime(timeLeft)}
-    <p class="remaining">Remaining</p>`;
-    setCircleDasharray();
-    
-
-    if (timeLeft === 0) {
-      onTimesUp();
-    }
-  }, 1000);
+    timerInterval = setInterval(() => {
+        timePassed = timePassed += 1;
+        timeLeft = (TIME_LIMIT - timePassed);
+        document.getElementById("base-timer-label").innerHTML = `<p class="seconds">Seconds</p> 
+        ${formatTime(timeLeft)}
+        <p class="remaining">Remaining</p>`;
+        setCircleDasharray();
+        
+        
+        if (timeLeft === 0) {
+            onTimesUp();
+        }
+    }, 1000);
 }
 
 function formatTime(time) {
-  const minutes = Math.floor(time / 60);
-  let seconds = time % 60;
-
-  return `${seconds}`;
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    
+    return `${seconds}`;
 }
 
 function calculateTimeFraction() {
-  const rawTimeFraction = timeLeft / TIME_LIMIT;
-  return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+    const rawTimeFraction = timeLeft / TIME_LIMIT;
+    return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
 }
 
 function setCircleDasharray() {
-  const circleDasharray = `${(
-    calculateTimeFraction() * FULL_DASH_ARRAY
-  ).toFixed(0)} 283`;
-  document
-    .getElementById("base-timer-path-remaining")
-    .setAttribute("stroke-dasharray", circleDasharray);
+    const circleDasharray = `${(
+        calculateTimeFraction() * FULL_DASH_ARRAY
+        ).toFixed(0)} 283`;
+        document
+        .getElementById("base-timer-path-remaining")
+        .setAttribute("stroke-dasharray", circleDasharray);
+    }
+    
+    startTimer();
+    
+    
+    document.getElementById("app").innerHTML = `
+    <div class="base-timer">
+      <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <g class="base-timer__circle">
+          <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+          <path
+            id="base-timer-path-remaining"
+            stroke-dasharray="283"
+            class="base-timer__path-remaining"
+            d="
+              M 50, 50
+              m -45, 0
+              a 45,45 0 1,0 90,0
+              a 45,45 0 1,0 -90,0
+            "
+          ></path>
+        </g>
+      </svg>
+      <span id="base-timer-label" class="base-timer__label">
+      <p class="seconds">Seconds</p>
+      ${formatTime(timeLeft)}
+      <p class="remaining">Remaining</p>
+      </span>
+    </div>
+    `;
+    
 }
 
 
-
-
-
-
+getQuestions() 
 
 
 
