@@ -140,6 +140,8 @@ async function getQuestions() {
         //inserisco il clone
         target.append(clone);
 
+        
+
     }
 }
 
