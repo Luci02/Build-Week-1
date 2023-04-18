@@ -1,4 +1,6 @@
 let sum = 0;
+//seleziono il template che ho fatto in html
+let template = document.getElementsByTagName('template')[0];
 
 async function getQuestions() {
     let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
@@ -7,6 +9,9 @@ async function getQuestions() {
 
     //ciclo le domande una per una
     for (let question of questions) {
+
+        //clono il contenuto, generando ogni volta un nuovo clone
+        let clone = template.content.cloneNode(true);
 
         //creo un array vuoto e pusho tutte le domande
         let options = [];
@@ -24,14 +29,14 @@ async function getQuestions() {
         //stampo i bottoni con le risposte
         for (let risposta of options) {
             //seleziono l'elemento con l'id #domanda e gli cambio il contenuto
-            let domanda = document.querySelector('#domanda');
+            let domanda = clone.querySelector('#domanda');
             domanda.textContent = question.question;
 
             let bottone = document.createElement('button');
             bottone.textContent = risposta;
 
             //AGGIUNGERE LE VARIE CLASSI AL BOTTONE
-            let buttonContainer = document.querySelector('#button-container');
+            let buttonContainer = clone.querySelector('#button-container');
             // bottone.classList.add('');
             buttonContainer.append(bottone);
         }
@@ -42,13 +47,13 @@ async function getQuestions() {
 
             switch (true) {
                 case difficulty == 'easy':
-                    tempo = 16;
+                    tempo = 5;
                     break;
                 case difficulty == 'medium':
-                    tempo = 40;
+                    tempo = 4;
                     break;
                 case difficulty == 'hard':
-                    tempo = 60;
+                    tempo = 3;
                     break;
                 default:
                     tempo = 5;
@@ -61,7 +66,7 @@ async function getQuestions() {
         let timeLeft = TIME_LIMIT;
         let timerInterval = null;
 
-        document.getElementById("app").innerHTML = `
+        clone.getElementById("app").innerHTML = `
         <div class="base-timer">
           <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <g class="base-timer__circle">
@@ -129,8 +134,16 @@ async function getQuestions() {
                 .setAttribute("stroke-dasharray", circleDasharray);
         }
 
+        //definisco un'area in cui inserire il clone
+        let target = document.getElementById("target");
+        
+        //inserisco il clone
+        target.append(clone);
+
     }
 }
+
+
 
 //funzione per mescolare gli elementi di un array
 function shuffleArray(array) {
