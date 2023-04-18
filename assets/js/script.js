@@ -2,12 +2,12 @@ let sum = 0;
 
 async function getQuestions() {
     let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
-
+    
     console.dir(questions);
-
+    
     //ciclo le domande una per una
     for (let question of questions) {
-
+        
         //creo un array vuoto e pusho tutte le domande
         let options = [];
         options.push(question["correct_answer"]);
@@ -17,7 +17,6 @@ async function getQuestions() {
 
         //salvo in una variabile la risposta corretta
         let correctAnswer = question["correct_answer"];
-
         //con la funzione shuffleArray() mescolo gli elementi contenuti nell'array
         shuffleArray(options);
 
