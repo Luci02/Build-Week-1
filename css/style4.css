@@ -44,4 +44,40 @@ h3{
 
 #stelle img{
     padding: 5px;
+    fill: black;
+}
+
+#feedback{
+    padding: 50px;
+    text-align: center;
+}
+input{
+    height: 30px;
+    width: 650px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid #D20094;
+}
+input::placeholder{
+    margin-left: 20px;
+}
+
+button{
+    
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    font-weight: bolder;
+    font-size: 1.4em;
+    background-color: #00ffff;
+    box-shadow:  0 0 30px  #00ffff;
+    border: none;
+}
+
+#bottone{
+    margin-top: 10px;
+    
+    margin-left: 380px;
+    
 }
