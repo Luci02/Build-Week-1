@@ -8,9 +8,19 @@ async function getQuestions() {
     console.dir(questions);
     
     //ciclo le domande una per una
-    for (let question of questions) {
-        
+    let questionIndex = 0;
+    displayQuestion(questionIndex)
+    
+    function displayQuestion(index) {
+        if (index >= questions.length) {
+            return;
+        }
+    
+        let question = questions[index];
         let clone = template.content.cloneNode(true);
+
+        for (let question of questions) {
+        
 
         
         //creo un array vuoto e pusho tutte le domande
@@ -35,10 +45,16 @@ async function getQuestions() {
             let bottone = document.createElement('button');
             bottone.textContent = risposta;
 
+            bottone.addEventListener('click', () => {
+                clearInterval(timerInterval);
+                target.innerHTML = '';
+                displayQuestion(index + 1);
+            });
             //AGGIUNGERE LE VARIE CLASSI AL BOTTONE
             let buttonContainer = clone.querySelector('#button-container');
             // bottone.classList.add('');
             buttonContainer.append(bottone);
+            
         }
 
         let tempo = 0;
@@ -137,6 +153,7 @@ async function getQuestions() {
 
         let target = document.getElementById("target")
         target.appendChild(clone);
+        console.log(target)
     }
 }
 
@@ -149,8 +166,8 @@ function shuffleArray(array) {
     return array;
 }
 
-
+}
 
 
 //eseguo la funzione getQuestions
-getQuestions();
+getQuestions()
