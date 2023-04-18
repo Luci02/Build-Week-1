@@ -1,13 +1,18 @@
 let sum = 0;
 
+let template = document.getElementsByTagName("template")[0];
 async function getQuestions() {
     let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
 
-    console.dir(questions);
 
+    console.dir(questions);
+    
     //ciclo le domande una per una
     for (let question of questions) {
+        
+        let clone = template.content.cloneNode(true);
 
+        
         //creo un array vuoto e pusho tutte le domande
         let options = [];
         options.push(question["correct_answer"]);
@@ -24,14 +29,14 @@ async function getQuestions() {
         //stampo i bottoni con le risposte
         for (let risposta of options) {
             //seleziono l'elemento con l'id #domanda e gli cambio il contenuto
-            let domanda = document.querySelector('#domanda');
+            let domanda = clone.querySelector('#domanda');
             domanda.textContent = question.question;
 
             let bottone = document.createElement('button');
             bottone.textContent = risposta;
 
             //AGGIUNGERE LE VARIE CLASSI AL BOTTONE
-            let buttonContainer = document.querySelector('#button-container');
+            let buttonContainer = clone.querySelector('#button-container');
             // bottone.classList.add('');
             buttonContainer.append(bottone);
         }
@@ -61,7 +66,7 @@ async function getQuestions() {
         let timeLeft = TIME_LIMIT;
         let timerInterval = null;
 
-        document.getElementById("app").innerHTML = `
+        clone.getElementById("app").innerHTML = `
         <div class="base-timer">
           <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <g class="base-timer__circle">
@@ -129,6 +134,9 @@ async function getQuestions() {
                 .setAttribute("stroke-dasharray", circleDasharray);
         }
 
+
+        let target = document.getElementById("target")
+        target.appendChild(clone);
     }
 }
 
@@ -140,6 +148,9 @@ function shuffleArray(array) {
     }
     return array;
 }
+
+
+
 
 //eseguo la funzione getQuestions
 getQuestions();
