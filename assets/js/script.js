@@ -22,7 +22,7 @@ async function getQuestions() {
 
         //salvo in una variabile la risposta corretta
         let correctAnswer = question["correct_answer"];
-        
+
         //con la funzione shuffleArray() mescolo gli elementi contenuti nell'array
         shuffleArray(options);
 
@@ -39,25 +39,31 @@ async function getQuestions() {
             let buttonContainer = clone.querySelector('#button-container');
             // bottone.classList.add('');
             buttonContainer.append(bottone);
+
+            let arrayBottoni = clone.querySelectorAll('button')
+            for (let bottone of arrayBottoni) {
+                bottone.addEventListener('click', function() {
+                    
+                });
+            }
         }
 
         let tempo = 0;
         //salvo la difficoltà in una variabile
-        let difficulty = question.difficulty;
 
-            switch (true) {
-                case difficulty == 'easy':
-                    tempo = 5;
-                    break;
-                case difficulty == 'medium':
-                    tempo = 4;
-                    break;
-                case difficulty == 'hard':
-                    tempo = 3;
-                    break;
-                default:
-                    tempo = 5;
-            }
+        switch (true) {
+            case question.difficulty == 'easy':
+                tempo = 5;
+                break;
+            case question.difficulty == 'medium':
+                tempo = 4;
+                break;
+            case question.difficulty == 'hard':
+                tempo = 3;
+                break;
+            default:
+                tempo = 5;
+        }
 
         //faccio partire il timer
         const FULL_DASH_ARRAY = 283;
@@ -97,7 +103,7 @@ async function getQuestions() {
         function onTimesUp() {
             clearInterval(timerInterval);
         }
-        
+
         function startTimer() {
             timerInterval = setInterval(() => {
                 timePassed = timePassed += 1;
@@ -106,25 +112,24 @@ async function getQuestions() {
             ${formatTime(timeLeft)}
             <p class="remaining">Remaining</p>`;
                 setCircleDasharray();
-        
-        
+
+
                 if (timeLeft === 0) {
                     onTimesUp();
                 }
             }, 1000);
         }
-        
+
         function formatTime(time) {
             let seconds = time % 60;
-        
             return `${seconds}`;
         }
-        
+
         function calculateTimeFraction() {
             const rawTimeFraction = timeLeft / TIME_LIMIT;
             return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
         }
-        
+
         function setCircleDasharray() {
             const circleDasharray = `${(
                 calculateTimeFraction() * FULL_DASH_ARRAY
@@ -136,11 +141,9 @@ async function getQuestions() {
 
         //definisco un'area in cui inserire il clone
         let target = document.getElementById("target");
-        
+
         //inserisco il clone
         target.append(clone);
-
-        
 
     }
 }
