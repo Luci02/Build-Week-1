@@ -49,12 +49,15 @@ button{
     font-size: 1em;
     -moz-box-shadow-bottom: 4px 4px 4px black;
     -webkit-box-shadow-bottom: 4px 4px 4px black;
-    background-color: rgba(121, 115, 115, 0.116);
-    border: 2px solid white;
+    background: rgba(168, 173, 168, 0.171);
     margin-left: 40px;
     margin-bottom: 20px;
-    border-radius: 50px;
+    border-radius: 60px;
     font-size: 0.8em;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+    border-bottom-color: rgba(255, 255, 255, 0.096);
     
     
 
