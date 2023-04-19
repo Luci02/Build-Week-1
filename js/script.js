@@ -64,6 +64,9 @@ function fillStars(target) {
   }
 }
 
+
+
+
 //ADD CLICK EVENT LISTENER TO STARS CONTAINER
 let contenitoreStelle = document.querySelector("#stars");
 contenitoreStelle.addEventListener("click", function(event) {
