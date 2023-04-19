@@ -1,6 +1,9 @@
-//seleziono il template che ho fatto in html
+//Template in HTML
 let primaPagina = document.getElementsByTagName('template')[0];
 let templateQuiz = document.getElementsByTagName('template')[1];
+let risultatiTest = document.getElementsByTagName('template')[2];
+let feedback = document.getElementsByTagName('template')[3];
+
 let contatore = 0;
 let risposte = {
     giuste: 0,
@@ -10,8 +13,6 @@ let risposte = {
 
 async function getQuestions() {
     let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
-
-    console.dir(questions);
 
     const FULL_DASH_ARRAY = 283;
     let TIME_LIMIT = 0;
@@ -33,7 +34,6 @@ async function getQuestions() {
     shuffleArray(options);
 
     let buttonContainer = clone.querySelector('#button-container');
-    console.log(options);
 
     //stampo i bottoni con le risposte
     for (let risposta of options) {
@@ -45,7 +45,7 @@ async function getQuestions() {
         bottone.textContent = risposta;
 
         //AGGIUNGERE LE VARIE CLASSI AL BOTTONE
-        // bottone.classList.add('');
+        // bottone.classList.add('bottone');
         buttonContainer.append(bottone);
 
         bottone.addEventListener('click', function () {
@@ -60,13 +60,13 @@ async function getQuestions() {
 
     switch (true) {
         case questions[contatore].difficulty == 'easy':
-            TIME_LIMIT = 3;
+            TIME_LIMIT = 30;
             break;
         case questions[contatore].difficulty == 'medium':
-            TIME_LIMIT = 5;
+            TIME_LIMIT = 50;
             break;
         case questions[contatore].difficulty == 'hard':
-            TIME_LIMIT = 6;
+            TIME_LIMIT = 60;
             break;
         default:
             TIME_LIMIT = 5;
@@ -74,7 +74,6 @@ async function getQuestions() {
 
     //definisco un'area in cui inserire il clone
     let target = document.getElementById("target");
-    console.log(target);
 
     //inserisco il clone
     target.append(clone);
@@ -173,19 +172,25 @@ async function getQuestions() {
 
             //mostra le domande
             getQuestions();
-        } else {
+        }
+        else {
+            targetTemp.innerHTML = '';
+            clone1 = risultatiTest.content.cloneNode(true);
+            targetTemp.append(clone1);
+            let corrette = document.querySelector('.esito');
+            let errate = document.querySelector('.esito2');
 
-            //se non ci sono domande mostra il punteggio
-            targetTemp.innerHTML = `
-            <p>Giuste: ${risposte.giuste}</p>
-            <p>Sbagliate: ${risposte.sbagliate}</p>
-            <p>Le tue risposte:</p>
-            <ol id="lista">
-            <ol>
+            let percentualeCorrette = calcolaCorrette(risposte.giuste, questions.length);
+            let percentualeSbagliate = calcolaSbagliate(risposte.sbagliate, questions.length);
+
+            corrette.innerHTML = `
+            <h3>Correct <b>${percentualeCorrette} %</b></h3>
+            <p> ${risposte.giuste}/${questions.length} questions </p>
             `;
-            for (let elemento of risposte["risposte date"]) {
-                document.getElementById('lista').innerHTML += `<li>${elemento}</li>`;
-            }
+            errate.innerHTML = `
+            <h3>Wrong <b>${percentualeSbagliate} %</b></h3>
+            <p> ${risposte.sbagliate}/${questions.length} questions </p>
+            `;
         }
     }
 }
@@ -213,11 +218,33 @@ let proceed = document.querySelector('#botton .bottone1');
 
 proceed.addEventListener('click', function () {
     target.innerHTML = '';
-    document.getElementById("target").append(templateQuiz.content.cloneNode(true));
     //eseguo la funzione getQuestions
     getQuestions();
-    proceed.removeEventListener('click');
 })
+
+
+//     //se non ci sono domande mostra il punteggio
+//     targetTemp.innerHTML = `
+//     <p>Giuste: ${risposte.giuste}</p>
+//     <p>Sbagliate: ${risposte.sbagliate}</p>
+//     <p>Le tue risposte:</p>
+//     <ol id="lista">
+//     <ol>
+//     `;
+//     for (let elemento of risposte["risposte date"]) {
+//         document.getElementById('lista').innerHTML += `<li>${elemento}</li>`;
+//     }
+
+
+function calcolaCorrette(giuste, totale) {
+    let total = (giuste / totale) * 100;
+    return total;
+}
+
+function calcolaSbagliate(sbagliate, totale) {
+    let total = (sbagliate / totale) * 100;
+    return total;
+}
 
 
 
