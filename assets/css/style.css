@@ -385,6 +385,10 @@ input {
     fill: black;
 }
 
+#stelle svg:hover {
+    fill: #00ffff;
+}
+
 .window4 #feedback {
     padding: 50px;
     text-align: center;
