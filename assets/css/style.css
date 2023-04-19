@@ -386,10 +386,6 @@ input {
     fill: black;
 }
 
-#stelle svg:hover {
-    fill: #00ffff;
-}
-
 .window4 #feedback {
     padding: 50px;
     text-align: center;
@@ -431,19 +427,7 @@ input {
 }
 
 /* CSS Per Le Stelle Di Feedback */
-.star{
-    margin-left: 10px;
-};
 
-.starHover:hover {
-    background-color: #00ffff;
-}
-
-.starActive {
+#stelle svg.starActive {
     fill: #00ffff;
-}
-
-
-.starInactive {
-    fill: black;
 }
