@@ -2,14 +2,16 @@ let sum = 0;
 //seleziono il template che ho fatto in html
 let template = document.getElementsByTagName('template')[0];
 let contatore = 0;
+let risposte = {
+    giuste: 0,
+    sbagliate: 0,
+}
+
+//provare a usare do while
 
 async function getQuestions() {
     let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
-    let risposte = {
-        giuste: 0,
-        sbagliate: 0,
-    }
-
+    
     console.dir(questions);
 
     //clono il contenuto, generando ogni volta un nuovo clone
@@ -25,8 +27,8 @@ async function getQuestions() {
     //con la funzione shuffleArray() mescolo gli elementi contenuti nell'array
     shuffleArray(options);
 
-
     let buttonContainer = clone.querySelector('#button-container');
+    console.log(options);
 
     //stampo i bottoni con le risposte
     for (let risposta of options) {
