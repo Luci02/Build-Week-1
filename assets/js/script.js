@@ -1,5 +1,5 @@
 //seleziono il template che ho fatto in html
-let template = document.getElementsByTagName('template')[0];
+let templateQuiz = document.getElementsByTagName('template')[0];
 let contatore = 0;
 let risposte = {
     giuste: 0,
@@ -19,7 +19,7 @@ async function getQuestions() {
     let timerInterval = null;
 
     //clono il contenuto, generando ogni volta un nuovo clone
-    let clone = template.content.cloneNode(true);
+    let clone = templateQuiz.content.cloneNode(true);
 
     //creo un array vuoto e pusho tutte le domande
     let options = [];
