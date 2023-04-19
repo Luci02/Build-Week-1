@@ -4,6 +4,7 @@ let contatore = 0;
 let risposte = {
     giuste: 0,
     sbagliate: 0,
+    "risposte date": [],
 }
 
 async function getQuestions() {
@@ -50,6 +51,7 @@ async function getQuestions() {
     //aggiungo l'evento click ed aumento l'indice
     for (let bottone of buttonContainer.children) {
         bottone.addEventListener('click', function () {
+            risposte["risposte date"].push(this.textContent);
             if (this.textContent == questions[contatore]["correct_answer"]) {
                 risposte.giuste++;
             } else {
@@ -112,8 +114,10 @@ async function getQuestions() {
     //funzioni relative al timer
     function onTimesUp() {
         clearInterval(timerInterval);
+        risposte.sbagliate++;
         contatore++;
         clearTarget();
+        risposte["risposte date"].push('Risposta non data');
     }
 
     function startTimer() {
@@ -159,19 +163,28 @@ async function getQuestions() {
     }
 
     function clearTarget() {
+
+        let targetTemp = document.getElementById('target');
+
         //controlla se ci sono domande rimanenti
         if (contatore < questions.length) {
-            document.getElementById('target').innerHTML = '';
+            targetTemp.innerHTML = '';
 
             //mostra le domande
             getQuestions();
         } else {
 
             //se non ci sono domande mostra il punteggio
-            document.getElementById('target').innerHTML = `
+            targetTemp.innerHTML = `
             <p>Giuste: ${risposte.giuste}</p>
             <p>Sbagliate: ${risposte.sbagliate}</p>
+            <p>Le tue risposte:</p>
+            <ol id="lista">
+            <ol>
             `;
+            for(let elemento of risposte["risposte date"]){
+                document.getElementById('lista').innerHTML += `<li>${elemento}</li>`;
+            }
         }
     }
 }
