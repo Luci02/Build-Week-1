@@ -1,5 +1,6 @@
 //seleziono il template che ho fatto in html
-let templateQuiz = document.getElementsByTagName('template')[0];
+let primaPagina = document.getElementsByTagName('template')[0];
+let templateQuiz = document.getElementsByTagName('template')[1];
 let contatore = 0;
 let risposte = {
     giuste: 0,
@@ -9,11 +10,6 @@ let risposte = {
 
 async function getQuestions() {
     let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
-
-
-    document.querySelector('#currentQuestion').innerHTML = contatore + 1;
-
-    document.querySelector('#totalQuestions').innerHTML = questions.length;
 
     console.dir(questions);
 
@@ -41,8 +37,8 @@ async function getQuestions() {
 
     //stampo i bottoni con le risposte
     for (let risposta of options) {
-        //seleziono l'elemento con l'id #domanda e gli cambio il contenuto
-        let domanda = clone.querySelector('#domanda');
+        //seleziono l'elemento contenitore della domanda e gli cambio il contenuto
+        let domanda = clone.querySelector('.window2 h3');
         domanda.textContent = questions[contatore].question;
 
         let bottone = document.createElement('button');
@@ -51,10 +47,7 @@ async function getQuestions() {
         //AGGIUNGERE LE VARIE CLASSI AL BOTTONE
         // bottone.classList.add('');
         buttonContainer.append(bottone);
-    }
 
-    //aggiungo l'evento click ed aumento l'indice
-    for (let bottone of buttonContainer.children) {
         bottone.addEventListener('click', function () {
             risposte["risposte date"].push(this.textContent);
             if (this.textContent == questions[contatore]["correct_answer"]) {
@@ -79,8 +72,14 @@ async function getQuestions() {
             TIME_LIMIT = 5;
     }
 
+    //definisco un'area in cui inserire il clone
+    let target = document.getElementById("target");
+    console.log(target);
 
-    clone.getElementById("app").innerHTML = `
+    //inserisco il clone
+    target.append(clone);
+
+    document.getElementById("app").innerHTML = `
             <div class="base-timer">
                 <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <g class="base-timer__circle">
@@ -109,12 +108,9 @@ async function getQuestions() {
     //faccio partire il timer
     startTimer();
 
+    document.querySelector('#currentQuestion').innerHTML = contatore + 1;
 
-    //definisco un'area in cui inserire il clone
-    let target = document.getElementById("target");
-
-    //inserisco il clone
-    target.append(clone);
+    document.querySelector('#totalQuestions').innerHTML = questions.length;
 
     //funzioni relative al timer
     function onTimesUp() {
@@ -203,12 +199,32 @@ function shuffleArray(array) {
     return array;
 }
 
-//eseguo la funzione getQuestions
-getQuestions();
+//clono il contenuto, generando ogni volta un nuovo clone
+let clone1 = primaPagina.content.cloneNode(true);
+
+//definisco un'area in cui inserire il clone
+let target = document.getElementById("target");
+
+//inserisco il clone
+target.append(clone1);
+
+//seleziono il bottone per procedere con il quiz dalla schermata
+let proceed = document.querySelector('#botton .bottone1');
+
+proceed.addEventListener('click', function () {
+    target.innerHTML = '';
+    document.getElementById("target").append(templateQuiz.content.cloneNode(true));
+    //eseguo la funzione getQuestions
+    getQuestions();
+    proceed.removeEventListener('click');
+})
+
+
+
 
 
 //funzione per stampare le 10 stelle per il feedback
-function stelle(){
+function stelle() {
 
     let stelle = document.querySelector('#stelle');
 
