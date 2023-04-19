@@ -2,6 +2,7 @@ h3,
 h4,
 button {
     font-family: 'Outfit', sans-serif;
+    cursor: pointer;
 }
 
 p {
@@ -245,7 +246,7 @@ input {
     word-break: break-all;
 }
 
-#button-container button:hover{
+#button-container button:hover {
     background-color: #D20094;
 }
 
@@ -395,22 +396,24 @@ input {
 }
 
 .window4 input {
+    color: white;
+    font-size: 1.5rem;
     height: 30px;
     width: 650px;
     background: transparent;
     border: none;
     border-bottom: 3px solid #D20094;
     padding-top: 20px;
+    padding-left: 25px;
 }
 
-
+.window4 input:focus {
+    outline: none;
+}
 
 .window4 button {
     color: black;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 48px;
-    padding-right: 48px;
+    padding: 15px 48px;
     font-weight: bolder;
     font-size: 1.4em;
     background-color: #00ffff;
@@ -420,12 +423,27 @@ input {
 
 .window4 #bottone4 {
     margin-top: 10px;
-
     margin-left: 380px;
-
 }
 
 .window4 ::placeholder {
     font-size: 1.2em;
-    padding-left: 25px;
+}
+
+/* CSS Per Le Stelle Di Feedback */
+.star{
+    margin-left: 10px;
+};
+
+.starHover:hover {
+    background-color: #00ffff;
+}
+
+.starActive {
+    fill: #00ffff;
+}
+
+
+.starInactive {
+    fill: black;
 }

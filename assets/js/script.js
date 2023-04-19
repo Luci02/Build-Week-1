@@ -192,7 +192,7 @@ async function getQuestions() {
             <p> ${risposte.sbagliate}/${questions.length} questions </p>
             `;
 
-            document.querySelector('#bottone').addEventListener('click', function(){
+            document.querySelector('#bottone').addEventListener('click', function () {
                 target.innerHTML = '';
                 clone1 = feedback.content.cloneNode(true);
                 target.append(clone1);
@@ -270,4 +270,27 @@ function stelle() {
                 </label>`
     }
 
+    //ADD CLICK EVENT LISTENER TO STARS CONTAINER
+    stelle.addEventListener("click", function (event) {
+        if (event.target.matches(".rating__icon--star")) {
+            fillStars(event.target);
+        }
+    });
+
+}
+
+//RIEMPIRE LE STELLE FINCHE QUELLA DESIDERATA NON VIENE CLICCATA
+function fillStars(target) {
+    let activeStarClass = "starActive";
+    let inactiveStarClass = "starInactive";
+    let stars = document.querySelectorAll("#stelle .rating__icon--star");
+    let starIndex = Array.from(stars).indexOf(target);
+    for (let i = 0; i <= starIndex; i++) {
+        stars[i].classList.add(activeStarClass);
+        stars[i].classList.remove(inactiveStarClass);
+    }
+    for (let i = starIndex + 1; i < stars.length; i++) {
+        stars[i].classList.remove(activeStarClass);
+        stars[i].classList.add(inactiveStarClass);
+    }
 }
