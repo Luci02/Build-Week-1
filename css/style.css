@@ -341,7 +341,7 @@ input{
     margin-left: 215px;
 }
 
-.window4 #stelle img{
+#stelle svg{
     padding: 5px;
     fill: black;
 }
