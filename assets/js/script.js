@@ -7,12 +7,17 @@ let risposte = {
     sbagliate: 0,
 }
 
-//provare a usare do while
-
 async function getQuestions() {
     let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
-    
+
     console.dir(questions);
+
+    const FULL_DASH_ARRAY = 283;
+    let TIME_LIMIT;
+    let timePassed = 0;
+    let timeLeft = TIME_LIMIT;
+    let timerInterval = null;
+
 
     //clono il contenuto, generando ogni volta un nuovo clone
     let clone = template.content.cloneNode(true);
@@ -72,38 +77,33 @@ async function getQuestions() {
             tempo = 5;
     }
 
-    const FULL_DASH_ARRAY = 283;
-    let TIME_LIMIT = tempo;
-    let timePassed = 0;
-    let timeLeft = TIME_LIMIT;
-    let timerInterval = null;
+    TIME_LIMIT = tempo;
 
     clone.getElementById("app").innerHTML = `
-    <div class="base-timer">
-    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <g class="base-timer__circle">
-    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-    <path
-    id="base-timer-path-remaining"
-    stroke-dasharray="283"
-    class="base-timer__path-remaining"
-    d="
-    M 50, 50
-    m -45, 0
-    a 45,45 0 1,0 90,0
-    a 45,45 0 1,0 -90,0
-    "
-    ></path>
-    </g>
-    </svg>
-    <span id="base-timer-label" class="base-timer__label">
-    <p class="seconds">Seconds</p>
-    ${formatTime(timeLeft)}
-    <p class="remaining">Remaining</p>
-    </span>
-    </div>
-    `;
-
+            <div class="base-timer">
+                <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <g class="base-timer__circle">
+                <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+                <path
+                id="base-timer-path-remaining"
+                stroke-dasharray="283"
+                class="base-timer__path-remaining"
+                d="
+                M 50, 50
+                m -45, 0
+                a 45,45 0 1,0 90,0
+                a 45,45 0 1,0 -90,0
+                "
+                ></path>
+                </g>
+                </svg>
+                <span id="base-timer-label" class="base-timer__label">
+                    <p class="seconds">Seconds</p>
+                    ${formatTime(timeLeft)}
+                    <p class="remaining">Remaining</p>
+                </span>
+            </div>
+            `;
 
     //faccio partire il timer
     startTimer();
@@ -115,7 +115,6 @@ async function getQuestions() {
     target.append(clone);
 
     //funzioni relative al timer
-
     function onTimesUp() {
         clearInterval(timerInterval);
         contatore++;
@@ -126,7 +125,7 @@ async function getQuestions() {
         timerInterval = setInterval(() => {
             timePassed = timePassed += 1;
             timeLeft = TIME_LIMIT - timePassed;
-            document.getElementById("base-timer-label").innerHTML = `<p class="seconds">Seconds</p> 
+            document.getElementById("base-timer-label").innerHTML = `<p class="seconds">Seconds</p>
             ${formatTime(timeLeft)}
             <p class="remaining">Remaining</p>`;
             setCircleDasharray();
@@ -159,7 +158,7 @@ async function getQuestions() {
 
     function faiDomanda() {
         //definisco un'area in cui inserire il clone
-        let target = document.getElementById("target");
+        let target = document.getElementById("pagina2");
 
         while (target.hasChildNodes()) {
             target.removeChild(target.firstChild);
