@@ -10,6 +10,11 @@ let risposte = {
 async function getQuestions() {
     let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
 
+
+    document.querySelector('#currentQuestion').innerHTML = contatore + 1;
+
+    document.querySelector('#totalQuestions').innerHTML = questions.length;
+
     console.dir(questions);
 
     const FULL_DASH_ARRAY = 283;

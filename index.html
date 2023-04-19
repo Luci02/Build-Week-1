@@ -6,26 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epicode Benchmark Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/timer.css">
-    <style>
-        #button-container {
-            background-color: aliceblue;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style2.css">
 </head>
 
 <body>
     <main>
-        <div id="pagina1" class="box">
+        <div class="window">
+            <div id="pagina1" class="box">
+                <div id="logo">
+                    <img src="img/epicode_logo.png" alt="">
+                </div>
 
+                <h3><span>How can i create a </span> checkbox in HTML?</h3>
+
+
+
+            </div>
+
+            <div class="bottone">
+                <button>Daje Roma Daje</button>
+                <button>Daje Roma Daje</button>
+
+            </div>
+            <div class="bottone">
+                <button>Daje Roma Daje</button>
+                <button>Daje Roma Daje</button>
+            </div>
+
+            
         </div>
         <template>
-            <div id="pagina2" class="box">
+            <div class="window">
+                <div id="pagina2" class="box">
 
-                <div id="app"></div>
-    
-                <p id="domanda"></p>
-                <div id="button-container"></div>
+                    <div id="app"></div>
+
+                    <p id="domanda"></p>
+                    <div id="button-container"></div>
+                </div>
+                
+                <div>
+                    <h4>question <span id="currentQuestion"></span> <b>/ <span id="totalQuestions"></span></b></h4>
+                </div>
             </div>
         </template>
         <div id="target"></div>
