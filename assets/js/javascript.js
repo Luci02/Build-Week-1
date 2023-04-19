@@ -1,9 +1,11 @@
 //seleziono il template che ho fatto in html
-let template = document.getElementsByTagName('template')[0];
+let primaPagina = document.getElementsByTagName('template')[0];
+let templateQuiz = document.getElementsByTagName('template')[1];
 let contatore = 0;
 let risposte = {
     giuste: 0,
     sbagliate: 0,
+    "risposte date": [],
 }
 
 async function getQuestions() {
@@ -18,7 +20,7 @@ async function getQuestions() {
     let timerInterval = null;
 
     //clono il contenuto, generando ogni volta un nuovo clone
-    let clone = template.content.cloneNode(true);
+    let clone = templateQuiz.content.cloneNode(true);
 
     //creo un array vuoto e pusho tutte le domande
     let options = [];
@@ -35,8 +37,8 @@ async function getQuestions() {
 
     //stampo i bottoni con le risposte
     for (let risposta of options) {
-        //seleziono l'elemento con l'id #domanda e gli cambio il contenuto
-        let domanda = clone.querySelector('#domanda');
+        //seleziono l'elemento contenitore della domanda e gli cambio il contenuto
+        let domanda = clone.querySelector('.window2 h3');
         domanda.textContent = questions[contatore].question;
 
         let bottone = document.createElement('button');
@@ -45,11 +47,9 @@ async function getQuestions() {
         //AGGIUNGERE LE VARIE CLASSI AL BOTTONE
         // bottone.classList.add('');
         buttonContainer.append(bottone);
-    }
 
-    //aggiungo l'evento click ed aumento l'indice
-    for (let bottone of buttonContainer.children) {
         bottone.addEventListener('click', function () {
+            risposte["risposte date"].push(this.textContent);
             if (this.textContent == questions[contatore]["correct_answer"]) {
                 risposte.giuste++;
             } else {
@@ -72,8 +72,14 @@ async function getQuestions() {
             TIME_LIMIT = 5;
     }
 
+    //definisco un'area in cui inserire il clone
+    let target = document.getElementById("target");
+    console.log(target);
 
-    clone.getElementById("app").innerHTML = `
+    //inserisco il clone
+    target.append(clone);
+
+    document.getElementById("app").innerHTML = `
             <div class="base-timer">
                 <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <g class="base-timer__circle">
@@ -102,18 +108,17 @@ async function getQuestions() {
     //faccio partire il timer
     startTimer();
 
+    document.querySelector('#currentQuestion').innerHTML = contatore + 1;
 
-    //definisco un'area in cui inserire il clone
-    let target = document.getElementById("target");
-
-    //inserisco il clone
-    target.append(clone);
+    document.querySelector('#totalQuestions').innerHTML = questions.length;
 
     //funzioni relative al timer
     function onTimesUp() {
         clearInterval(timerInterval);
+        risposte.sbagliate++;
         contatore++;
         clearTarget();
+        risposte["risposte date"].push('Risposta non data');
     }
 
     function startTimer() {
@@ -159,19 +164,28 @@ async function getQuestions() {
     }
 
     function clearTarget() {
+
+        let targetTemp = document.getElementById('target');
+
         //controlla se ci sono domande rimanenti
         if (contatore < questions.length) {
-            document.getElementById('target').innerHTML = '';
+            targetTemp.innerHTML = '';
 
             //mostra le domande
             getQuestions();
         } else {
 
             //se non ci sono domande mostra il punteggio
-            document.getElementById('target').innerHTML = `
+            targetTemp.innerHTML = `
             <p>Giuste: ${risposte.giuste}</p>
             <p>Sbagliate: ${risposte.sbagliate}</p>
+            <p>Le tue risposte:</p>
+            <ol id="lista">
+            <ol>
             `;
+            for (let elemento of risposte["risposte date"]) {
+                document.getElementById('lista').innerHTML += `<li>${elemento}</li>`;
+            }
         }
     }
 }
@@ -185,5 +199,44 @@ function shuffleArray(array) {
     return array;
 }
 
-//eseguo la funzione getQuestions
-getQuestions();
+//clono il contenuto, generando ogni volta un nuovo clone
+let clone1 = primaPagina.content.cloneNode(true);
+
+//definisco un'area in cui inserire il clone
+let target = document.getElementById("target");
+
+//inserisco il clone
+target.append(clone1);
+
+//seleziono il bottone per procedere con il quiz dalla schermata
+let proceed = document.querySelector('#botton .bottone1');
+
+proceed.addEventListener('click', function () {
+    target.innerHTML = '';
+    document.getElementById("target").append(templateQuiz.content.cloneNode(true));
+    //eseguo la funzione getQuestions
+    getQuestions();
+    proceed.removeEventListener('click');
+})
+
+
+
+
+
+//funzione per stampare le 10 stelle per il feedback
+function stelle() {
+
+    let stelle = document.querySelector('#stelle');
+
+    for (let index = 1; index <= 10; index++) {
+
+        stelle.innerHTML += `<label aria-label="${index} stars" class="rating__label" for="rating-${index}"><svg class="rating__icon--star" width="47" height="46" viewBox="0 0 47 46" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.2044 1.55551C22.6143 0.569963 24.0104 0.569964 24.4203 1.55552L29.9874 14.9402C30.1602 15.3557 30.5509 15.6396 30.9994 15.6756L45.4494 16.834C46.5134 16.9193 46.9448 18.2471 46.1341 18.9415L35.1248 28.3722C34.7831 28.6649 34.6338 29.1242 34.7382 29.5619L38.1018 43.6626C38.3494 44.7009 37.2199 45.5215 36.309 44.9651L23.9379 37.4089C23.5538 37.1743 23.0709 37.1743 22.6868 37.4089L10.3157 44.9651C9.40478 45.5215 8.27528 44.7009 8.52295 43.6626L11.8865 29.5619C11.9909 29.1242 11.8416 28.6649 11.4999 28.3722L0.490575 18.9415C-0.320069 18.2471 0.111362 16.9193 1.17535 16.834L15.6253 15.6756C16.0738 15.6396 16.4645 15.3557 16.6374 14.9402L22.2044 1.55551Z"/>
+                </svg>
+                </label>
+                <input class="rating__input" name="rating" id="rating-${index}" value="${index}" 
+            type="radio">
+            `
+    }
+
+}
