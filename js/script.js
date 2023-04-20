@@ -317,7 +317,7 @@ function stelle() {
 
 const acetta = document.querySelector('#accept');
 const bottone = document.querySelector('#botton');
-bottone.onclick = () => {
+bottone.onclick = function() {
    if (!acetta.checked) {
       alert("checkbox is not checked");
       location.reload();
@@ -327,4 +327,4 @@ bottone.onclick = () => {
     document.body.appendChild(clone);
     window.location.href = "#pagina2";
    }
-};
+   };
