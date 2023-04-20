@@ -11,7 +11,7 @@ let risposte = {
 }
 
 async function getQuestions() {
-    let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
+    let questions = await fetch('https://opentdb.com/api.php?amount=2&category=18').then(res => res.json()).then(res => res.results);
 
     const FULL_DASH_ARRAY = 283;
     let TIME_LIMIT = 0;
@@ -179,11 +179,25 @@ async function getQuestions() {
             // Clona la pagina dei risultati del test
             let clone1 = risultatiTest.content.cloneNode(true);
             targetTemp.append(clone1);
+
+            const myChart = document.querySelector('#my-chart');
             let corrette = document.querySelector('.esito');
             let errate = document.querySelector('.esito2');
-
             let percentualeCorrette = calcolaCorrette(risposte.giuste, questions.length);
             let percentualeSbagliate = calcolaSbagliate(risposte.sbagliate, questions.length);
+
+            new Chart( myChart, {
+                type: "doughnut",
+                data: {
+                    datasets: [{
+                        data: [percentualeSbagliate,percentualeCorrette],
+                        backgroundColor: [
+                            '#D20094',
+                            '#00FFFF'
+                        ],
+                    }],
+                }
+            } );
 
             corrette.innerHTML = `
             <h3>Correct <b>${percentualeCorrette} %</b></h3>
@@ -194,35 +208,33 @@ async function getQuestions() {
             <p> ${risposte.sbagliate}/${questions.length} questions </p>
             `;
 
-            console.log(percentualeCorrette < 60);
-
             // Se la percentuale delle disposte corrette è inferiore a 60
-            if( percentualeCorrette < 60  ){
+            // if (percentualeCorrette < 60) {
 
-                // Seleziono il cerchio e lo coloro di rosso
-                let circle = document.querySelector('.window3 #circle');
-                circle.style.borderColor = 'red';
-                circle.style.marginTop = '-440px';
+            //     // Seleziono il cerchio e lo coloro di rosso
+            //     let circle = document.querySelector('.window3 #circle');
+            //     circle.style.borderColor = 'red';
+            //     circle.style.marginTop = '-440px';
 
-                // Cambio il testo dell'h4
-                let h4 = document.querySelector('.window3 h4');
-                h4.innerHTML = `
-                <h4>We're Sorry!</h4>
-                <p> <span>You didn't passed the exam.</span> </p>
-                `
-                // Coloro di rosso
-                let span = document.querySelector('.window3 h4 span');
-                span.style.color = 'red';
+            //     // Cambio il testo dell'h4
+            //     let h4 = document.querySelector('.window3 h4');
+            //     h4.innerHTML = `
+            //     <h4>We're Sorry!</h4>
+            //     <p> <span>You didn't passed the exam.</span> </p>
+            //     `
+            //     // Coloro di rosso
+            //     let span = document.querySelector('.window3 h4 span');
+            //     span.style.color = 'red';
 
-            }else{
+            // } else {
 
-                
-                let h4 = document.querySelector('.window3 h4');
-                h4.innerHTML = `
-                <h4>Congratulations! <span> You passed the exam. </span> </h4>
-                <p>We'll send you the certificate in few minutes. Check your email &lpar;including promotions / spam folder&rpar;</p>
-                `
-            }
+
+            //     let h4 = document.querySelector('.window3 h4');
+            //     h4.innerHTML = `
+            //     <h4>Congratulations! <span> You passed the exam. </span> </h4>
+            //     <p>We'll send you the certificate in few minutes. Check your email &lpar;including promotions / spam folder&rpar;</p>
+            //     `
+            // }
 
             document.querySelector('#bottone button').addEventListener('click', function () {
                 target.innerHTML = '';
@@ -257,9 +269,16 @@ let proceed = document.querySelector('#botton .bottone1');
 
 // Al click del bottone PROCEED si svuota la pagina corrente
 proceed.addEventListener('click', function () {
-    target.innerHTML = '';
-    // Eseguo la funzione getQuestions per iniziare il Quiz
-    getQuestions();
+
+    let accetta = document.querySelector('#accept');
+    if (!accetta.checked) {
+        alert("checkbox is not checked");
+        location.reload();
+    } else {
+        target.innerHTML = '';
+        getQuestions();
+    }
+
 })
 
 // Funzione per calcolare la percentuale di risposte corrette
