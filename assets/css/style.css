@@ -127,11 +127,9 @@ input {
     vertical-align: center;
     display: flex;
     align-items: center;
-
 }
 
 #botton .bottone1 {
-
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 60px;
@@ -141,12 +139,10 @@ input {
     background-color: #00ffff;
     box-shadow: 0 0 30px #00ffff;
     border: none;
-
-
 }
 
-.pinput label{
-    font-family: 'Inter', sans-serif;    
+.pinput label {
+    font-family: 'Inter', sans-serif;
 }
 
 #botton {
@@ -322,7 +318,7 @@ input {
     font-size: 1em;
 }
 
-.window3 h4 p span{
+.window3 h4 p span {
     color: red;
 }
 
@@ -341,6 +337,14 @@ input {
     -moz-box-shadow: 1px 2px 14px 6px #0000009f;
     -o-box-shadow: 1px 2px 14px 6px #0000009f;
     box-shadow: 1px 2px 14px 6px #0000009f;
+}
+
+#chart-container{
+    position: relative;
+    bottom: 310px;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
 }
 
 .window3 button {

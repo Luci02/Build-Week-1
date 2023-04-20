@@ -190,10 +190,10 @@ async function getQuestions() {
                 type: "doughnut",
                 data: {
                     datasets: [{
-                        data: [percentualeCorrette,percentualeSbagliate],
+                        data: [percentualeSbagliate,percentualeCorrette],
                         backgroundColor: [
-                            '#00FFFF',
-                            '#D20094'
+                            '#D20094',
+                            '#00FFFF'
                         ],
                     }],
                 }
