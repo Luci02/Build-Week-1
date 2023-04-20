@@ -313,3 +313,18 @@ function stelle() {
     aggiungiHover();
 
 }
+
+
+const acetta = document.querySelector('#accept');
+const bottone = document.querySelector('#botton');
+bottone.onclick = () => {
+   if (!acetta.checked) {
+      alert("checkbox is not checked");
+      location.reload();
+   } else {
+    const template = document.querySelector('tuttteLedomande');
+    const clone = template.content.cloneNode(true);
+    document.body.appendChild(clone);
+    window.location.href = "#pagina2";
+   }
+};
