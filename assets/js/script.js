@@ -8,11 +8,10 @@ let contatore = 0;
 let risposte = {
     giuste: 0,
     sbagliate: 0,
-    "risposte date": [],
 }
 
 async function getQuestions() {
-    let questions = await fetch('https://opentdb.com/api.php?amount=3&category=18').then(res => res.json()).then(res => res.results);
+    let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
 
     const FULL_DASH_ARRAY = 283;
     let TIME_LIMIT = 0;
@@ -49,7 +48,6 @@ async function getQuestions() {
         buttonContainer.append(bottone);
 
         bottone.addEventListener('click', function () {
-            risposte["risposte date"].push(this.textContent);
             if (this.textContent == questions[contatore]["correct_answer"]) {
                 risposte.giuste++;
             } else {
@@ -58,6 +56,7 @@ async function getQuestions() {
         });
     }
 
+    // Imposto il timer in base alla difficoltà delle domande
     switch (true) {
         case questions[contatore].difficulty == 'easy':
             TIME_LIMIT = 30;
@@ -72,12 +71,13 @@ async function getQuestions() {
             TIME_LIMIT = 5;
     }
 
-    //definisco un'area in cui inserire il clone
+    // Definisco un'area in cui inserire il clone
     let target = document.getElementById("target");
 
-    //inserisco il clone
+    // Inserisco il clone
     target.append(clone);
 
+    // Seleziono l'elemento con l'id "app" e costruisco l'HTML del timer
     document.getElementById("app").innerHTML = `
             <div class="base-timer">
                 <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -107,8 +107,8 @@ async function getQuestions() {
     //faccio partire il timer
     startTimer();
 
+    // QuerySelector per aggiornare dinamicamente il conteggio delle domande in basso nel quiz
     document.querySelector('#currentQuestion').innerHTML = contatore + 1;
-
     document.querySelector('#totalQuestions').innerHTML = questions.length;
 
     //funzioni relative al timer
@@ -117,7 +117,6 @@ async function getQuestions() {
         risposte.sbagliate++;
         contatore++;
         clearTarget();
-        risposte["risposte date"].push('Risposta non data');
     }
 
     function startTimer() {
@@ -168,13 +167,16 @@ async function getQuestions() {
 
         //controlla se ci sono domande rimanenti
         if (contatore < questions.length) {
+            // Svuota il DIV con ID "target"
             targetTemp.innerHTML = '';
-
             //mostra le domande
             getQuestions();
         }
         else {
+            // Svuota il DIV con ID "target"
             targetTemp.innerHTML = '';
+
+            // Clona la pagina dei risultati del test
             let clone1 = risultatiTest.content.cloneNode(true);
             targetTemp.append(clone1);
             let corrette = document.querySelector('.esito');
@@ -202,7 +204,7 @@ async function getQuestions() {
     }
 }
 
-//funzione per mescolare gli elementi di un array
+// Funzione per mescolare gli elementi di un array
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -211,59 +213,45 @@ function shuffleArray(array) {
     return array;
 }
 
-//clono il contenuto, generando ogni volta un nuovo clone
+// Clono il contenuto, generando ogni volta un nuovo clone
 let clone1 = primaPagina.content.cloneNode(true);
 
-//definisco un'area in cui inserire il clone
+// Definisco un'area in cui inserire il clone
 let target = document.getElementById("target");
 
-//inserisco il clone
+// Inserisco il clone
 target.append(clone1);
 
-//seleziono il bottone per procedere con il quiz dalla schermata
+// Seleziono il bottone per procedere con il quiz dalla schermata
 let proceed = document.querySelector('#botton .bottone1');
 
+// Al click del bottone PROCEED si svuota la pagina corrente
 proceed.addEventListener('click', function () {
     target.innerHTML = '';
-    //eseguo la funzione getQuestions
+    // Eseguo la funzione getQuestions per iniziare il Quiz
     getQuestions();
 })
 
-
-//     //se non ci sono domande mostra il punteggio
-//     targetTemp.innerHTML = `
-//     <p>Giuste: ${risposte.giuste}</p>
-//     <p>Sbagliate: ${risposte.sbagliate}</p>
-//     <p>Le tue risposte:</p>
-//     <ol id="lista">
-//     <ol>
-//     `;
-//     for (let elemento of risposte["risposte date"]) {
-//         document.getElementById('lista').innerHTML += `<li>${elemento}</li>`;
-//     }
-
-
+// Funzione per calcolare la percentuale di risposte corrette
 function calcolaCorrette(giuste, totale) {
     let total = (giuste / totale) * 100;
     return total;
 }
 
+// Funzione per calcolare la percentuale di risposte sbagliate
 function calcolaSbagliate(sbagliate, totale) {
     let total = (sbagliate / totale) * 100;
     return total;
 }
 
 
-
-
-
-//funzione per stampare le 10 stelle per il feedback
+// Funzione per stampare le 10 stelle per il feedback
 function stelle() {
 
-    //seleziono il DIV contenitore delle stelle
+    // Seleziono il DIV contenitore delle stelle
     let stelleDiv = document.querySelector('#stelle');
 
-    //creo le 10 stelle
+    // Creo le 10 stelle
     for (let index = 1; index <= 10; index++) {
 
         stelleDiv.innerHTML += `<svg width="47" height="46" viewBox="0 0 47 46" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -271,7 +259,7 @@ function stelle() {
         </svg>`
     }
 
-    //AGGIUNGERE HOVER SU TUTTE LE STELLE
+    // AGGIUNGERE HOVER SU TUTTE LE STELLE
     function aggiungiHover() {
         let stelle = document.querySelectorAll('#stelle svg');
         stelle.forEach(function (questeStelle) {
@@ -280,7 +268,7 @@ function stelle() {
         });
     }
 
-    //ADD HIGHLIGHT CLASS ON HOVER
+    // ADD HIGHLIGHT CLASS ON HOVER
     function illumina() {
         let seleziona = document.querySelectorAll("#stelle svg");
         let starIndex = Array.from(seleziona).indexOf(this);
@@ -293,7 +281,7 @@ function stelle() {
     // una volta alla volta e con "indexOf(this)" cioè seleziona "QUESTO-THIS"  cioe l'elemento su cui si trova il mouse in quel preciso momento.
     // poi per ogni stella aggiunge la classe starActive definito in css prima.
 
-    //TOGLIERE LA FUNZIONE ILLUMINA 
+    // TOGLIERE LA FUNZIONE ILLUMINA 
     function togliIllumina() {
         let stars = document.querySelectorAll("#stelle svg");
         stars.forEach(function (star) {
@@ -301,7 +289,7 @@ function stelle() {
         });
     }
 
-    //RIEMPIRE LE STELLE FINCHE QUELLA DESIDERATA NON VIENE CLICCATA
+    // RIEMPIRE LE STELLE FINCHE QUELLA DESIDERATA NON VIENE CLICCATA
     function fillStars(target) {
         let activeStarClass = "starActive";
         let inactiveStarClass = "starInactive";
@@ -317,7 +305,7 @@ function stelle() {
         }
     }
 
-    //ADD CLICK EVENT LISTENER TO STARS CONTAINER
+    // ADD CLICK EVENT LISTENER TO STARS CONTAINER
     stelleDiv.addEventListener("click", function (event) {
         fillStars(event.target);
     });
