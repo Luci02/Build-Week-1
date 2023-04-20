@@ -1,0 +1,440 @@
+h3,
+h4,
+button {
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+}
+
+
+.window1 {
+    margin: auto;
+    width: 1024px;
+    height: 768px;
+    background-image: url(../img/bg.jpg);
+}
+
+.pinput input[type="checkbox"]:checked {
+    accent-color: #D20094;
+}
+
+.window2 {
+    margin: auto;
+    width: 1024px;
+    height: 768px;
+    background-image: url(../img/bg.jpg);
+}
+
+.window3 {
+    margin: auto;
+    width: 1024px;
+    height: 768px;
+    background-image: url(../img/bg.jpg);
+    color: white;
+
+}
+
+.window4 {
+    margin: auto;
+    width: 1024px;
+    height: 768px;
+    background-image: url(../img/bg.jpg);
+    color: white;
+}
+
+.paragrafo1 {
+    font-size: 0.9em;
+    margin-right: 100px;
+
+}
+
+#pagina1 {
+    color: white;
+    margin-left: 100px;
+    margin-right: 350px;
+    height: auto;
+}
+
+#logo img {
+    width: 150px;
+    padding-top: 40px;
+
+}
+
+#pagina1 h3 {
+    margin-bottom: 10px;
+    font-size: 5em;
+    line-height: 60px;
+}
+
+#pagina2 h3 {
+    font-size: 2.2em;
+    margin: 50px 120px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+#flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: top;
+    padding-top: 30px;
+}
+
+span {
+    font-weight: 300;
+}
+
+li {
+    font-size: 0.9em;
+    line-height: 25px;
+}
+
+#istruction {
+    height: 50px;
+    color: #D20094;
+    font-size: 2em;
+    height: 40px;
+    margin-top: 10px;
+}
+
+ul {
+    font-family: 'Inter', sans-serif;
+    padding-top: 20px;
+}
+
+input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    vertical-align: bottom;
+    background-color: rgba(0, 0, 0, 0.08);
+    border: 2px solid white;
+}
+
+
+.text {
+    font-size: 0.9em;
+    padding-left: 10px;
+    margin-top: 20px;
+}
+
+#checkContainer {
+    margin-top: 70px;
+    vertical-align: center;
+    display: flex;
+    align-items: center;
+
+}
+
+#botton .bottone1 {
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    font-weight: bolder;
+    font-size: 1.4em;
+    background-color: #00ffff;
+    box-shadow: 0 0 30px #00ffff;
+    border: none;
+
+
+}
+
+.pinput label{
+    font-family: 'Inter', sans-serif;    
+}
+
+#botton {
+    margin-top: -55px;
+
+    margin-left: 620px;
+
+}
+
+.bottone {
+    margin-left: 130px;
+    margin-right: 150px;
+}
+
+.bottone button {
+
+    color: white;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 110px;
+    padding-right: 110px;
+    font-weight: bolder;
+    font-size: 1em;
+    -moz-box-shadow-bottom: 4px 4px 4px black;
+    -webkit-box-shadow-bottom: 4px 4px 4px black;
+    background: rgba(168, 173, 168, 0.171);
+    margin-left: 40px;
+    margin-bottom: 20px;
+    border-radius: 60px;
+    font-size: 0.8em;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+    border-bottom-color: rgba(255, 255, 255, 0.096);
+
+}
+
+#pagina2 {
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.titolo {
+    overflow: auto;
+}
+
+.bottone button:hover {
+    background-color: #D20094;
+
+}
+
+.contatoreDomande {
+    margin-top: 80px;
+    color: white;
+    font-weight: 500;
+    font-size: 1em;
+    text-transform: uppercase;
+    margin-left: 430px;
+    letter-spacing: 3px;
+}
+
+.contatoreDomande b {
+    color: #D20094;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+#button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#button-container button {
+    margin: 0 20px;
+    width: 250px;
+    color: white;
+    padding: 25px 50px;
+    font-weight: bolder;
+    font-size: 1.5em;
+    -moz-box-shadow-bottom: 4px 4px 4px black;
+    -webkit-box-shadow-bottom: 4px 4px 4px black;
+    background: rgba(168, 173, 168, 0.171);
+    margin-bottom: 20px;
+    border-radius: 60px;
+    font-size: 0.8em;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+    border-bottom-color: rgba(255, 255, 255, 0.096);
+    word-break: break-all;
+}
+
+#button-container button:hover {
+    background-color: #D20094;
+}
+
+.window3 p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.window3 h3 {
+    font-size: 50px;
+
+}
+
+.window3 .risultati {
+    text-align: center;
+    line-height: 1px;
+}
+
+.window3 .esito {
+    margin-left: 100px;
+    margin-top: 150px;
+    margin-right: 720px;
+}
+
+.window3 .esito h3 {
+    font-weight: 350;
+    margin-bottom: -20px;
+    margin-top: 30px;
+}
+
+.window3 .esito p {
+    margin-top: - 80px;
+    font-size: 1.1em;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.window3 .esito2 {
+    margin-right: 80px;
+    margin-top: -175px;
+    margin-left: 770px;
+}
+
+.window3 .esito2 h3 {
+    font-weight: 350;
+    margin-bottom: -20px;
+    margin-top: 30px;
+}
+
+.window3 .esito2 p {
+    margin-top: - 80px;
+    font-size: 1.1em;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.84);
+    margin-left: 30px;
+}
+
+.window3 #congratulations {
+    text-align: center;
+    margin-top: -170px;
+    margin-left: 440px;
+    margin-right: 440px;
+    margin-bottom: 300px;
+}
+
+.window3 #congratulations p {
+    font-size: 0.8em;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.84);
+}
+
+.window3 h4 {
+    font-size: 1em;
+}
+
+.window3 h4 p span{
+    color: red;
+}
+
+.window3 span {
+    color: #06BCCA;
+}
+
+.window3 #circle {
+    border: 45px solid #00ffff;
+    border-radius: 50%;
+    width: 240px;
+    height: 240px;
+    margin-top: -560px;
+    margin-left: 350px;
+    -webkit-box-shadow: 1px 2px 14px 6px #0000009f;
+    -moz-box-shadow: 1px 2px 14px 6px #0000009f;
+    -o-box-shadow: 1px 2px 14px 6px #0000009f;
+    box-shadow: 1px 2px 14px 6px #0000009f;
+}
+
+.window3 button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    font-weight: bolder;
+    font-size: 1.4em;
+    border: 2.3px solid white;
+    margin-left: 400px;
+    margin-top: 55px;
+    color: white;
+    background-color: transparent;
+    box-shadow: 0 0 20px rgba(60, 128, 196, 0.547);
+}
+
+.window4 p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+}
+
+.window4 h3 {
+    font-size: 50px;
+    line-height: 10px;
+    padding-top: 50px;
+}
+
+.window4 #recommend {
+    text-align: center;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.window4 #stelle {
+    margin-left: 215px;
+}
+
+#stelle svg {
+    padding: 5px;
+    fill: black;
+}
+
+.window4 #feedback {
+    padding: 50px;
+    text-align: center;
+}
+
+.window4 input {
+    color: white;
+    font-size: 1.5rem;
+    height: 30px;
+    width: 650px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid #D20094;
+    padding-top: 20px;
+    padding-left: 25px;
+}
+
+.window4 input:focus {
+    outline: none;
+}
+
+.window4 button {
+    color: black;
+    padding: 15px 48px;
+    font-weight: bolder;
+    font-size: 1.4em;
+    background-color: #00ffff;
+    box-shadow: 0 0 30px #00ffff;
+    border: none;
+}
+
+.window4 #bottone4 {
+    margin-top: 10px;
+    margin-left: 380px;
+}
+
+.window4 ::placeholder {
+    font-size: 1.2em;
+}
+
+/* CSS Per Le Stelle Di Feedback */
+
+#stelle svg.starActive {
+    fill: #00ffff;
+}
+
+.starActive {
+    fill: #00ffff;
+}
+
+
+.starInactive {
+    fill: black;
+}
