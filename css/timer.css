@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+body {
+  height: 100vh;
+  place-items: center;
+}
+
+.base-timer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+
+.base-timer__svg {
+  transform: scaleX(-1);
+}
+
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+.base-timer__path-elapsed {
+  stroke-width: 10px;
+  stroke: grey;
+  opacity: 0.3;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 10px;
+  stroke-linecap:square;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+}
+
+.base-timer__path-remaining {
+  color: #00FFFF;
+}
+
+.base-timer__label {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  font-size: 50px;
+  font-family: 'Outfit', sans-serif;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.seconds{
+  margin: 0;
+  text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+}
+
+.remaining{
+  margin: 0;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+}
