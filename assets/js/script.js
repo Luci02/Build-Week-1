@@ -22,7 +22,7 @@ async function getQuestions() {
     //clono il contenuto, generando ogni volta un nuovo clone
     let clone = templateQuiz.content.cloneNode(true);
 
-    //creo un array vuoto e pusho tutte le domande
+    //creo un array vuoto e pusho tutte le risposte
     let options = [];
     options.push(questions[contatore]["correct_answer"]);
     for (let element of questions[contatore]["incorrect_answers"]) {
