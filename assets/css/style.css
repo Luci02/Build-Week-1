@@ -17,6 +17,10 @@ p {
     background-image: url(../img/bg.jpg);
 }
 
+.pinput input[type="checkbox"]:checked {
+    accent-color: #D20094;
+}
+
 .window2 {
     margin: auto;
     width: 1024px;
@@ -107,9 +111,6 @@ input {
     height: 18px;
     cursor: pointer;
     vertical-align: bottom;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     background-color: rgba(0, 0, 0, 0.08);
     border: 2px solid white;
 }
@@ -268,7 +269,7 @@ input {
 .window3 .esito {
     margin-left: 100px;
     margin-top: 150px;
-    margin-right: 700px;
+    margin-right: 720px;
 }
 
 .window3 .esito h3 {
@@ -324,6 +325,10 @@ input {
 
 .window3 h4 {
     font-size: 1em;
+}
+
+.window3 h4 p span{
+    color: red;
 }
 
 .window3 span {
