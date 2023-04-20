@@ -1,12 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epicode Benchmark Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/timer.css">
 </head>
+
 <body>
-    
+    <main>
+        <!-- Template Prima Pagina -->
+        <template>
+            <div class="window1">
+                <div id="pagina1" class="box">
+                    <div id="logo">
+                        <img src="assets/img/epicode_logo.png" alt="">
+
+                    </div>
+
+                    <h3><span>Welcome to </span> your exam</h3>
+                    <div id="istruction">
+                        <h4>Instructions</h4>
+                    </div>
+                    <p class="paragrafo1">We don't expect most engineers to know the answers to all of these questions,
+                        so
+                        don't worry if you're unsure of a few of them.</p>
+                    <ul>
+                        <li>Each question is <b>timed</b> and can only be <b>answered once.</b></li>
+                        <li>Changing Browsers tab or opening other windows will <b>invalidate the question.</b></li>
+                        <li>This exam will take approx. <b>0-5 minutes</b></li>
+                    </ul>
+
+                    <div id="checkContainer">
+                        <div class="pinput">
+                            <input type="checkbox">
+                            <p class="text">I promise to answer myself without help of anyone</p>
+                        </div>
+
+                    </div>
+
+                    <div id="botton">
+                        <button class="bottone1">PROCEED</button>
+                    </div>
+
+                </div>
+            </div>
+        </template>
+
+        <!-- Template per il test -->
+        <template>
+            <div class="window2">
+                <div id="pagina2" class="box">
+                    <div id="flex">
+                        <div id="logo">
+                            <img src="assets/img/epicode_logo.png" alt="">
+                        </div>
+                        <div id="app"></div>
+                    </div>
+                    <!-- <h3><span>How can i create a </span> checkbox in HTML?</h3> -->
+                    <h3 class="titolo"></h3>
+                </div>
+
+                <div id="button-container" class="box"></div>
+
+                <div>
+                    <h4 class="contatoreDomande">question <span id="currentQuestion"></span> <b>/ <span
+                                id="totalQuestions"></span></b></h4>
+                </div>
+
+            </div>
+        </template>
+
+        <!-- Template per i risultati del test -->
+        <template>
+            <div class="window3">
+                <div id="pagina1" class="box">
+                    <div id="logo">
+                        <img src="assets/img/epicode_logo.png" alt="">
+                    </div>
+                </div>
+
+                <div class="risultati">
+                    <h3>Results</h3>
+                    <p>The summary of your answers:</p>
+                </div>
+
+                <div class="esito">
+                </div>
+
+                <div class="esito2">
+                </div>
+
+                <div id="congratulations">
+                    <h4>Congratulations! <span> You passed the exam. </span> </h4>
+                    <p>We'll send you the certificate in few minutes. Check your email &lpar;including promotions / spam
+                        folder&rpar;</p>
+                </div>
+
+                <div id="circle"></div>
+
+                <div id="bottone">
+                    <button>RATE US</button>
+                </div>
+            </div>
+        </template>
+
+        <template>
+            <div class="window4">
+                <div id="pagina1" class="box">
+                    <div id="logo">
+                        <img src="assets/img/epicode_logo.png" alt="">
+                    </div>
+                </div>
+
+                <div id="recommend">
+                    <h3>Tell us how it's going</h3>
+                    <p>From 0 to 10, how likely are you to recommend EPICODE to a friend or a collegue?</p>
+                </div>
+
+                <div id="stelle"></div>
+
+                <div id="feedback">
+                    <p>Leave us an open feedback about your experience so far</p>
+                    <input type="text" placeholder="Write your comment here">
+                </div>
+                <div id="bottone4">
+                    <button>MORE INFO</button>
+                </div>
+            </div>
+        </template>
+
+        <div id="target"></div>
+
+    </main>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>
