@@ -273,6 +273,7 @@ function stelle() {
 
     let stelle = document.querySelectorAll('#stelle svg');
     
+    // Cambiare e mettere il codice di Richard
     stelle.forEach((stella, index1) => {
         stella.addEventListener('click', () => {
             stelle.forEach((stella, index2) => {
@@ -280,4 +281,5 @@ function stelle() {
             })
         });
     })
+    //Cambiare e mettere il codice di Richard
 }
