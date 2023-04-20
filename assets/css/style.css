@@ -107,13 +107,11 @@ input {
     height: 18px;
     cursor: pointer;
     vertical-align: bottom;
-
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     background-color: rgba(0, 0, 0, 0.08);
     border: 2px solid white;
-
 }
 
 
@@ -306,9 +304,9 @@ input {
     margin-left: 30px;
 }
 
-.window3 .esito2 b {
+/* .window3 .esito2 b {
     margin-left: 15px;
-}
+} */
 
 .window3 #congratulations {
     text-align: center;

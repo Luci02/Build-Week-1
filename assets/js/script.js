@@ -11,7 +11,7 @@ let risposte = {
 }
 
 async function getQuestions() {
-    let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
+    let questions = await fetch('https://opentdb.com/api.php?amount=3&category=18').then(res => res.json()).then(res => res.results);
 
     const FULL_DASH_ARRAY = 283;
     let TIME_LIMIT = 0;
@@ -235,15 +235,20 @@ proceed.addEventListener('click', function () {
 // Funzione per calcolare la percentuale di risposte corrette
 function calcolaCorrette(giuste, totale) {
     let total = (giuste / totale) * 100;
+    if (total % 2 != 0) {
+        total = total.toFixed(2);
+    }
     return total;
 }
 
 // Funzione per calcolare la percentuale di risposte sbagliate
 function calcolaSbagliate(sbagliate, totale) {
     let total = (sbagliate / totale) * 100;
+    if (total % 2 != 0) {
+        total = total.toFixed(2);
+    }
     return total;
 }
-
 
 // Funzione per stampare le 10 stelle per il feedback
 function stelle() {
