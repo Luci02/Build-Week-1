@@ -305,7 +305,7 @@ input {
     margin-top: -170px;
     margin-left: 440px;
     margin-right: 440px;
-    margin-bottom: 300px;
+    margin-bottom: 20px;
 }
 
 .window3 #congratulations p {
@@ -343,8 +343,8 @@ input {
     position: relative;
     bottom: 310px;
     margin: 0 auto;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 .window3 button {
@@ -360,6 +360,10 @@ input {
     color: white;
     background-color: transparent;
     box-shadow: 0 0 20px rgba(60, 128, 196, 0.547);
+}
+#bottone {
+    margin: -311px;
+    margin-left: 6px;
 }
 
 .window4 p {

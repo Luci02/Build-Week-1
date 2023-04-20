@@ -195,9 +195,13 @@ async function getQuestions() {
                             '#D20094',
                             '#00FFFF'
                         ],
+                        
                     }],
-                }
-            } );
+                },
+                options: {
+                    cutout: '70%'
+                  }
+                });
 
             corrette.innerHTML = `
             <h3>Correct <b>${percentualeCorrette} %</b></h3>
@@ -229,12 +233,12 @@ async function getQuestions() {
             // } else {
 
 
-            //     let h4 = document.querySelector('.window3 h4');
-            //     h4.innerHTML = `
-            //     <h4>Congratulations! <span> You passed the exam. </span> </h4>
-            //     <p>We'll send you the certificate in few minutes. Check your email &lpar;including promotions / spam folder&rpar;</p>
-            //     `
-            // }
+                 let h4 = document.querySelector('.window3 h4');
+                 h4.innerHTML = `
+                 <h4>Congratulations! <span> You passed the exam. </span> </h4>
+                 <p>We'll send you the certificate in few minutes. Check your email &lpar;including promotions / spam folder&rpar;</p>
+                 `
+            }
 
             document.querySelector('#bottone button').addEventListener('click', function () {
                 target.innerHTML = '';
@@ -244,7 +248,7 @@ async function getQuestions() {
             });
         }
     }
-}
+//}
 
 // Funzione per mescolare gli elementi di un array
 function shuffleArray(array) {
