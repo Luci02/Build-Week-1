@@ -12,7 +12,7 @@ let risposte = {
 }
 
 async function getQuestions() {
-    let questions = await fetch('https://opentdb.com/api.php?amount=10&category=18').then(res => res.json()).then(res => res.results);
+    let questions = await fetch('https://opentdb.com/api.php?amount=3&category=18').then(res => res.json()).then(res => res.results);
 
     const FULL_DASH_ARRAY = 283;
     let TIME_LIMIT = 0;
@@ -260,6 +260,7 @@ function calcolaSbagliate(sbagliate, totale) {
 //funzione per stampare le 10 stelle per il feedback
 function stelle() {
 
+    //seleziono il DIV contenitore delle stelle
     let stelleDiv = document.querySelector('#stelle');
 
     //creo le 10 stelle
@@ -270,20 +271,9 @@ function stelle() {
         </svg>`
     }
 
-    let stelle = document.querySelectorAll('#stelle svg');
-
-    // Cambiare e mettere il codice di Richard
-    // stelle.forEach((stella, index1) => {
-    //     stella.addEventListener('click', () => {
-    //         stelle.forEach((stella, index2) => {
-    //             index1 >= index2 ? stella.classList.add('starActive') : stella.classList.remove('starActive')
-    //         })
-    //     });
-    // })
-    //Cambiare e mettere il codice di Richard
-
     //AGGIUNGERE HOVER SU TUTTE LE STELLE
     function aggiungiHover() {
+        let stelle = document.querySelectorAll('#stelle svg');
         stelle.forEach(function (questeStelle) {
             questeStelle.addEventListener("mouseover", illumina);
             questeStelle.addEventListener("mouseout", togliIllumina);
@@ -301,11 +291,11 @@ function stelle() {
 
     // La funzione "illumina" = il variabile "starIndex"  (che a sua volta è stata selezionata da "seleziona"), attiva il metodo "Array.from" che sempre con il ciclo divide le stelle
     // una volta alla volta e con "indexOf(this)" cioè seleziona "QUESTO-THIS"  cioe l'elemento su cui si trova il mouse in quel preciso momento.
-    // poi per ogni stella aggiunge la classe starHover definito in css prima.
+    // poi per ogni stella aggiunge la classe starActive definito in css prima.
 
     //TOGLIERE LA FUNZIONE ILLUMINA 
     function togliIllumina() {
-        const stars = document.querySelectorAll("#stelle svg");
+        let stars = document.querySelectorAll("#stelle svg");
         stars.forEach(function (star) {
             star.classList.remove("starActive");
         });
@@ -315,7 +305,7 @@ function stelle() {
     function fillStars(target) {
         let activeStarClass = "starActive";
         let inactiveStarClass = "starInactive";
-        let stars = document.querySelectorAll("#stelle svg");
+        let stars = document.querySelectorAll("#stelle svg path");
         let starIndex = Array.from(stars).indexOf(target);
         for (let i = 0; i <= starIndex; i++) {
             stars[i].classList.add(activeStarClass);
@@ -329,9 +319,7 @@ function stelle() {
 
     //ADD CLICK EVENT LISTENER TO STARS CONTAINER
     stelleDiv.addEventListener("click", function (event) {
-        if (event.target.matches(".starActive")) {
-            fillStars(event.target);
-        }
+        fillStars(event.target);
     });
 
     aggiungiHover();
