@@ -145,9 +145,8 @@ input {
 
 }
 
-.pinput {
-    display: flex;
-    align-items: center;
+.pinput label{
+    font-family: 'Inter', sans-serif;    
 }
 
 #botton {
@@ -304,10 +303,6 @@ input {
     color: rgba(255, 255, 255, 0.84);
     margin-left: 30px;
 }
-
-/* .window3 .esito2 b {
-    margin-left: 15px;
-} */
 
 .window3 #congratulations {
     text-align: center;

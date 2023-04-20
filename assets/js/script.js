@@ -194,10 +194,8 @@ async function getQuestions() {
             <p> ${risposte.sbagliate}/${questions.length} questions </p>
             `;
 
-            console.log(percentualeCorrette < 60);
-
             // Se la percentuale delle disposte corrette è inferiore a 60
-            if( percentualeCorrette < 60  ){
+            if (percentualeCorrette < 60) {
 
                 // Seleziono il cerchio e lo coloro di rosso
                 let circle = document.querySelector('.window3 #circle');
@@ -214,9 +212,9 @@ async function getQuestions() {
                 let span = document.querySelector('.window3 h4 span');
                 span.style.color = 'red';
 
-            }else{
+            } else {
 
-                
+
                 let h4 = document.querySelector('.window3 h4');
                 h4.innerHTML = `
                 <h4>Congratulations! <span> You passed the exam. </span> </h4>
@@ -257,9 +255,16 @@ let proceed = document.querySelector('#botton .bottone1');
 
 // Al click del bottone PROCEED si svuota la pagina corrente
 proceed.addEventListener('click', function () {
-    target.innerHTML = '';
-    // Eseguo la funzione getQuestions per iniziare il Quiz
-    getQuestions();
+
+    let accetta = document.querySelector('#accept');
+    if (!accetta.checked) {
+        alert("checkbox is not checked");
+        location.reload();
+    } else {
+        target.innerHTML = '';
+        getQuestions();
+    }
+
 })
 
 // Funzione per calcolare la percentuale di risposte corrette
