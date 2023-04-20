@@ -322,7 +322,7 @@ bottone.onclick = () => {
       alert("checkbox is not checked");
       location.reload();
    } else {
-    const template = document.querySelector('tuttteLedomande');
+    const template = document.querySelector('tutteLedomande');
     const clone = template.content.cloneNode(true);
     document.body.appendChild(clone);
     window.location.href = "#pagina2";
