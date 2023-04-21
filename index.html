@@ -27,16 +27,18 @@
                 <div id="pagina1" class="box">
                     <div id="logo">
                         <img src="assets/img/epicode_logo.png" alt="Logo Epicode">
-
                     </div>
 
                     <h3><span>Welcome to </span> your exam</h3>
+
                     <div id="istruction">
                         <h4>Instructions</h4>
                     </div>
-                    <p class="paragrafo1">We don't expect most engineers to know the answers to all of these questions,
-                        so
-                        don't worry if you're unsure of a few of them.</p>
+
+                    <p class="paragrafo1">
+                        We don't expect most engineers to know the answers to all of these questions,
+                        so don't worry if you're unsure of a few of them.</p>
+
                     <ul>
                         <li>Each question is <b>timed</b> and can only be <b>answered once.</b></li>
                         <li>Changing Browsers tab or opening other windows will <b>invalidate the question.</b></li>
@@ -48,13 +50,11 @@
                             <input type="checkbox" id="accept">
                             <label for="accept">I promise to answer myself without help of anyone</label>
                         </div>
-
                     </div>
 
                     <div id="botton">
                         <button class="bottone1">PROCEED</button>
                     </div>
-
                 </div>
             </div>
         </template>
@@ -69,17 +69,20 @@
                         </div>
                         <div id="app"></div>
                     </div>
-                    <!-- <h3><span>How can i create a </span> checkbox in HTML?</h3> -->
+
                     <h3 class="titolo"></h3>
                 </div>
 
                 <div id="button-container" class="box"></div>
 
                 <div>
-                    <h4 class="contatoreDomande">question <span id="currentQuestion"></span> <b>/ <span
-                                id="totalQuestions"></span></b></h4>
+                    <h4 class="contatoreDomande"> question
+                        <span id="currentQuestion"></span>
+                        <b>/
+                            <span id="totalQuestions"></span>
+                        </b>
+                    </h4>
                 </div>
-
             </div>
         </template>
 
@@ -104,10 +107,12 @@
                 </div>
 
                 <div id="congratulations">
-                    <h4></h4>
                 </div>
 
-                <div id="circle"></div>
+                <!-- <div id="circle"></div> -->
+                <div id="chart-container">
+                    <canvas id="my-chart"></canvas>
+                </div>
 
                 <div id="bottone">
                     <button>RATE US</button>
@@ -115,6 +120,7 @@
             </div>
         </template>
 
+        <!-- Template per i feedback -->
         <template>
             <div class="window4">
                 <div id="pagina1" class="box">
@@ -134,8 +140,10 @@
                     <p>Leave us an open feedback about your experience so far</p>
                     <input type="text" placeholder="Write your comment here">
                 </div>
+
                 <div id="bottone4">
-                    <a href="https://b1694534.smushcdn.com/1694534/wp-content/uploads/2021/06/variable.jpeg?lossy=1&strip=1&webp=1">
+                    <a
+                        href="https://b1694534.smushcdn.com/1694534/wp-content/uploads/2021/06/variable.jpeg?lossy=1&strip=1&webp=1">
                         <button>MORE INFO</button>
                     </a>
                 </div>
@@ -145,6 +153,8 @@
         <div id="target"></div>
 
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 

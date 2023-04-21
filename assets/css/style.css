@@ -2,6 +2,9 @@ h3,
 h4,
 button {
     font-family: 'Outfit', sans-serif;
+}
+
+button, img{
     cursor: pointer;
 }
 
@@ -127,11 +130,9 @@ input {
     vertical-align: center;
     display: flex;
     align-items: center;
-
 }
 
 #botton .bottone1 {
-
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 60px;
@@ -141,12 +142,10 @@ input {
     background-color: #00ffff;
     box-shadow: 0 0 30px #00ffff;
     border: none;
-
-
 }
 
-.pinput label{
-    font-family: 'Inter', sans-serif;    
+.pinput label {
+    font-family: 'Inter', sans-serif;
 }
 
 #botton {
@@ -291,12 +290,14 @@ input {
 }
 
 .window3 .esito2 h3 {
+    text-align: right;
     font-weight: 350;
     margin-bottom: -20px;
     margin-top: 30px;
 }
 
 .window3 .esito2 p {
+    text-align: right;
     margin-top: - 80px;
     font-size: 1.1em;
     font-weight: 300;
@@ -309,7 +310,7 @@ input {
     margin-top: -170px;
     margin-left: 440px;
     margin-right: 440px;
-    margin-bottom: 300px;
+    margin-bottom: 20px;
 }
 
 .window3 #congratulations p {
@@ -322,7 +323,7 @@ input {
     font-size: 1em;
 }
 
-.window3 h4 p span{
+.window3 h4 p span {
     color: red;
 }
 
@@ -343,6 +344,14 @@ input {
     box-shadow: 1px 2px 14px 6px #0000009f;
 }
 
+#chart-container{
+    position: relative;
+    bottom: 280px;
+    margin: 0 auto;
+    width: 350px;
+    height: 350px;
+}
+
 .window3 button {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -356,6 +365,11 @@ input {
     color: white;
     background-color: transparent;
     box-shadow: 0 0 20px rgba(60, 128, 196, 0.547);
+}
+#bottone {
+    position: absolute;
+    top: 590px;
+    margin: 0 auto;
 }
 
 .window4 p {
