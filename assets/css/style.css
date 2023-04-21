@@ -331,18 +331,6 @@ input {
     color: #06BCCA;
 }
 
-.window3 #circle {
-    border: 45px solid #00ffff;
-    border-radius: 50%;
-    width: 240px;
-    height: 240px;
-    margin-top: -560px;
-    margin-left: 350px;
-    -webkit-box-shadow: 1px 2px 14px 6px #0000009f;
-    -moz-box-shadow: 1px 2px 14px 6px #0000009f;
-    -o-box-shadow: 1px 2px 14px 6px #0000009f;
-    box-shadow: 1px 2px 14px 6px #0000009f;
-}
 
 #chart-container{
     position: relative;
