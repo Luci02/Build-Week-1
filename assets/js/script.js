@@ -238,8 +238,7 @@ async function getQuestions() {
                  let chartContainer = document.querySelector('#chart-container');
 
                  chartContainer.style.bottom = '190px';
-
-                 console.dir(chartContainer);
+                 
             }else{
                 let h4 = document.querySelector('.window3 #congratulations');
                  h4.innerHTML = `
