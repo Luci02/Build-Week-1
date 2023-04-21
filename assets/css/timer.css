@@ -7,7 +7,7 @@ body {
 
 .base-timer {
   position: relative;
-  width: 150px;
+  width: 110px;
   height: 150px;
 }
 
@@ -42,12 +42,12 @@ body {
 
 .base-timer__label {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 113px;
+  height: 115px;
   top: 0;
   display: flex;
   align-items: center;
-  font-size: 50px;
+  font-size: 33px;
   font-family: 'Outfit', sans-serif;
   align-content: center;
   flex-wrap: wrap;
@@ -60,7 +60,7 @@ body {
   margin: 0;
   text-transform: uppercase;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
 }
 
 .remaining{
@@ -68,5 +68,5 @@ body {
   margin-bottom: 10px;
   text-transform: uppercase;
   font-family: 'Outfit', sans-serif;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
 }
